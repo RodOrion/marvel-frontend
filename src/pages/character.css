@@ -1,0 +1,97 @@
+.character-sheet {
+  padding: 20px;
+}
+
+.character-content {
+  display: flex;
+  flex-direction: column; /* Par défaut en colonne pour les mobiles */
+  gap: 30px;
+}
+
+/* Passage à une disposition en ligne pour les écrans plus larges */
+@media (min-width: 768px) {
+  .character-content {
+    flex-direction: row;
+    align-items: stretch;
+  }
+}
+
+/* Conteneur de la photo et de la légende */
+.character-photo-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  flex-shrink: 0;
+  width: 100%; /* Largeur par défaut pour mobile */
+}
+
+@media (min-width: 768px) {
+  .character-photo-container {
+    width: 40%; /* Prend 40% de la largeur sur desktop */
+  }
+}
+
+.character-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.character-caption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px;
+  box-sizing: border-box;
+  color: white;
+  text-align: center;
+  backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.4);
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+.character-photo-container:hover .character-caption {
+  transform: translateY(0);
+}
+.character-name-absolute {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.character-details {
+  flex-grow: 1;
+}
+.character-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.comics-heading {
+  font-size: 2rem;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+.comics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 20px;
+}
+.comic-card {
+  text-align: center;
+}
+.comic-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+.comic-image:hover {
+  transform: scale(1.05);
+}
+.comic-title {
+  font-size: 0.9rem;
+  margin-top: 10px;
+}

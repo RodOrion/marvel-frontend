@@ -1,0 +1,26 @@
+* { box-sizing: border-box }
+html {font-size: 62.5%;}
+body {
+ margin:0;
+ line-height: 1.5;
+ font-size: 1.6rem;
+}
+a { text-decoration: none;}
+ol, ul {
+  list-style: none;
+}
+figure {
+  margin: 0;
+}
+figure img {
+  display: block;
+}
+img { max-width:100%; }
+.flexContainer { 
+ display: flex;
+ flex-wrap:wrap
+}
+.innerContainer {
+max-width: 1280px;
+margin: 1rem auto;
+}

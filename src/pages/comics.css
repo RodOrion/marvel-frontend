@@ -1,0 +1,14 @@
+section#comics.flexContainer {
+    gap:2rem;
+}
+section#comics.flexContainer h2 {
+    flex-basis: 100%;
+}
+section#comics.flexContainer article {
+    flex: 1 1 50%;
+}
+@media (min-width:1280px) {
+    section#comics.flexContainer article {
+        flex: 1 1 16.66667%;
+    }
+}
