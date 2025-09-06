@@ -5,7 +5,6 @@ import Characters from './pages/Characters';
 import ComicsCharacter from './pages/ComicsCharacter';
 import Header from './components/Header';
 import { useState } from 'react';
-import Favoris from './pages/Favoris';
 import Cookies from "js-cookie";
 import ModalConnect from './components/ModalConnect';
 import Character from './pages/Character';
