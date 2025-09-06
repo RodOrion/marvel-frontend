@@ -31,7 +31,6 @@ function App() {
           <Route path='/' element={<Characters formDataSearch={formDataSearch} token={token} setVisibleModalLog={setVisibleModalLog} setLocalFavorites={setLocalFavorites} localFavorites={localFavorites} />} />
           <Route path='/comics_character/:character_id' element={<ComicsCharacter />} />
           <Route path='/comics' element={<Comics formDataSearch={formDataSearch} token={token} />} />
-          <Route path='/favoris' element={<Favoris />} />
           <Route path='/character/:character_id' element={ <Character /> } />
           <Route path='/comic/:comic_id' element={<Comic />} />
         </Routes>
