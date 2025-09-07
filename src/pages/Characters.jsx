@@ -22,7 +22,7 @@ const Characters = ({
   const [pagination, setPagination] = useState({});
   const [visibleModalErrorFav, setVisibleModalErrorFav] = useState(false);
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
-
+  //const favorisType = "characters"
   /*********************************/
   /***** SEARCH & PAGINATION ******/
   /*******************************/
@@ -61,6 +61,12 @@ const Characters = ({
   /***********************/
   /***** FAVORITES ******/
   /*********************/
+  // Extraire les IDs des favoris characters
+  const extractCharacterFavoriteIds = (serverFavoris) => {
+    return serverFavoris
+      .filter((fav) => fav.type_favoris === "characters")
+      .map((fav) => fav.id_favoris);
+  };
   // Charger les favoris au montage
   useEffect(() => {
     const cookieFavorites = JSON.parse(Cookies.get("charactersIDFav") || "[]");
@@ -84,15 +90,17 @@ const Characters = ({
 
     try {
       const response = await axios.post(
-        `https://site--backend-marvel--zcmn9mpggpg8.code.run/favoris/${characterID}`,
+        `https://site--backend-marvel--zcmn9mpggpg8.code.run/favoris/characters/${characterID}`, //`https://site--backend-marvel--zcmn9mpggpg8.code.run/favoris/characters/${characterID}`
         {},
         {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      console.log("Server response for adding favorite:", response.data);
+      //console.log("response:", response.data);
       // Synchroniser avec la réponse du serveur
-      const serverFavorites = response.data.favoris;
+      const serverFavorites = extractCharacterFavoriteIds(
+        response.data.favoris
+      );
       setLocalFavorites(serverFavorites);
       Cookies.set("charactersIDFav", JSON.stringify(serverFavorites), {
         expires: 7,
@@ -126,14 +134,16 @@ const Characters = ({
 
     try {
       const response = await axios.delete(
-        `https://site--backend-marvel--zcmn9mpggpg8.code.run/favoris/${characterID}`,
+        `https://site--backend-marvel--zcmn9mpggpg8.code.run/favoris/${characterID}`, //`https://site--backend-marvel--zcmn9mpggpg8.code.run/favoris/${characterID}`
         {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
 
       // Synchroniser avec la réponse du serveur
-      const serverFavorites = response.data.favoris;
+      const serverFavorites = extractCharacterFavoriteIds(
+        response.data.favoris
+      );
       setLocalFavorites(serverFavorites);
       Cookies.set("charactersIDFav", JSON.stringify(serverFavorites), {
         expires: 7,
@@ -141,7 +151,7 @@ const Characters = ({
 
       return true;
     } catch (error) {
-      console.error("Erreur suppression favori:", error);
+      console.error("Erreur suppression favoris:", error);
       // Rollback
       const rollbackFavorites = [...localFavorites, characterID];
       setLocalFavorites(rollbackFavorites);

@@ -15,6 +15,7 @@ function App() {
   const [user, setUser] = useState({
     userID: Cookies.get('userID') || '',
     username: Cookies.get('username') || '',
+    avatar:''
   })
   const [visibleModalLog, setVisibleModalLog] = useState(false) // visibilité modale
   const [isLogin, setIsLogin] = useState(false); // card login or register
@@ -29,7 +30,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Characters formDataSearch={formDataSearch} token={token} setVisibleModalLog={setVisibleModalLog} setLocalFavorites={setLocalFavorites} localFavorites={localFavorites} />} />
           <Route path='/comics_character/:character_id' element={<ComicsCharacter />} />
-          <Route path='/comics' element={<Comics formDataSearch={formDataSearch} token={token} />} />
+          <Route path='/comics' element={<Comics formDataSearch={formDataSearch} token={token}  setVisibleModalLog={setVisibleModalLog}setLocalFavorites={setLocalFavorites} localFavorites={localFavorites} />} />
           <Route path='/character/:character_id' element={ <Character /> } />
           <Route path='/comic/:comic_id' element={<Comic />} />
         </Routes>

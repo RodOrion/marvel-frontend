@@ -31,12 +31,14 @@ body {
 .connexion {
   background-color: #222;
   color: rgb(230, 0, 0);
-  padding: 1.5rem 7rem 1.5rem 2rem;
-  justify-content: flex-end;
+  padding: 1rem 7rem 1rem 9rem;
+  justify-content: space-between;
 }
 .connexion > div {
   align-items: center;
   gap: 1rem;
+}
+.connexion > div:last-child {
   cursor: pointer;
 }
 .connexion > div:hover {
@@ -44,6 +46,9 @@ body {
 }
 .connexion svg {
   font-size: 2.4rem;
+}
+img.avatar {
+    max-height: 30px;
 }
 /** classes **/
 button.key {
@@ -98,12 +103,6 @@ button {
   color: #fff;
   padding: 1.5rem 3rem;
 }
-div > :has(.showFavoris) {
-  display: flex;
-  gap: 2rem;
-  margin: 0 0 0 auto;
-  align-self: center;
-}
 button.showFavoris {
     cursor: pointer;
     transform: skewX(-5deg);
@@ -118,13 +117,13 @@ header {
   box-shadow: 0 0 8px 4px #222;
 }
 header > .flexContainer {
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 0 3rem 0 6rem;
+  padding: 0 3rem;
 }
 input[type="search"] {
   padding: 3rem;
-  min-width: 500px;
+  min-width: 400px;
   border: none;
   background-color: rgba(255 255 255, 0.6);
   border-bottom: 2px solid #cdcdcd;
@@ -145,13 +144,23 @@ form.flexContainer:has(input[type="search"]) {
 .completion div {
     margin: 1rem;
 }
+@media (min-width:768px) {
+  header > .flexContainer {
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3rem 0 6rem;
+  }
+  input[type="search"] {
+    min-width: 500px;
+  }
+}
 /***/
 .navigation.flexContainer {
   position: relative;
-  padding: 0 0 3rem 9rem;
+  padding: 0 0 3rem 2rem;
   color: #fff;
-  font-size: 3.6rem;
-  gap: 8rem;
+  font-size: 2.4rem;
+  gap: 4rem;
   justify-content: space-between;
   align-items:center;
   margin-bottom: 2rem;
@@ -161,21 +170,19 @@ form.flexContainer:has(input[type="search"]) {
 }
 .navigation .item {
   position: relative;
-  padding: 4rem 8rem;
+  padding: 4rem;
   border-bottom: 1px solid;
   background: #fff4f3;
-  justify-content: center;
-  display: flex;
-  flex-direction: column;
   clip-path: polygon(2% 0, 100% 0%, 100% 100%, 0% 100%);
-  flex-basis: 40%;
+  flex-basis: 50%;
   text-align: center;
   font-weight: bold;
   z-index: 10;
 }
-
 .navigation .item a {
   color: #444;
+  display: flex;
+  justify-content: center;
   transition: 0.4s ease;
 }
 .item svg {
@@ -188,13 +195,52 @@ form.flexContainer:has(input[type="search"]) {
 }
 .shadow {
     position: absolute;
-    width: calc(40% - 3.2rem);
-    height: calc(100% - 2.4rem);
+    width: calc(50% - 5px);
+    height: calc(100% - 115px);
     background-color: #222;
     right: 0;
     top: 0;
     clip-path: polygon(2% 0, 100% 0%, 100% 100%, 0% 100%);
     filter: blur(30px);
+}
+div > div:has(.showFavoris) {
+  display: flex;
+  gap: 2rem;
+  margin: 0 auto;
+  align-self: center;
+  order: 1;
+}
+@media (min-width:1024px) {
+  .navigation.flexContainer {
+    padding: 0 0 3rem 9rem;
+    font-size: 3.6rem;
+    gap: 4rem;
+  }
+  .navigation .item {
+    flex-basis: 40%;
+  }
+  .shadow {
+      width: calc(40% - 32px);
+      height: calc(100% - 115px);
+      filter: blur(30px);
+  }
+  div > div:has(.showFavoris) {
+    gap: 2rem;
+    margin: 0 auto;
+    align-self: center;
+    order: 1;
+    flex-basis: 100%;
+  }
+}
+@media (min-width:1280px) {
+  .shadow {
+      height: calc(100% - 2.4rem);
+  }
+  div > div:has(.showFavoris) {
+    margin: 0 0 0 auto;
+    order: 0;
+    flex-basis: auto;
+  }
 }
 /***/
 section.flexContainer {
@@ -230,6 +276,10 @@ section article {
 section div.blur {
   position: relative;
   max-width: 341px;
+}
+#comics .blur {
+    width: calc(16.6667% - 2rem);
+    display: flex;
 }
 section div.blur::before {
   content: "";

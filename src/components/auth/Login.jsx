@@ -51,9 +51,12 @@ const Login = ({
       //console.log(response);
       const token = response.data.token;
       const username = response.data.account.username;
+      const avatar = response.data.account.avatar.secure_url;
       const userID = response.data._id;
+      console.log("response", response.data);
+
       setToken(token);
-      setUser({ username, userID });
+      setUser({ username, userID, avatar });
 
       // get favoris de l'utilisateur et dispatch
       const userFavorites = await fetchUserFavorites(token);

@@ -10,7 +10,7 @@ const Signup = ({ setToken, onSwitchToLogin, setVisibleModalLog, setUser }) => {
     email: "",
     password: "",
     confirmPassword: "",
-    newsletter: "",
+    avatar: "",
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -19,27 +19,38 @@ const Signup = ({ setToken, onSwitchToLogin, setVisibleModalLog, setUser }) => {
     e.preventDefault();
     setError("");
     if (!validateForm(formData, setError)) return;
+
     setLoading(true);
+
+    const formDataSend = new FormData();
+    formDataSend.append("username", formData.username);
+    formDataSend.append("email", formData.email);
+    formDataSend.append("password", formData.password);
+    formDataSend.append("avatar", formData.avatar);
+
     try {
       const response = await axios.post(
         "https://site--backend-marvel--zcmn9mpggpg8.code.run/user/signup",
+        formDataSend,
         {
-          //avatar: false,
-          username: formData.username,
-          email: formData.email,
-          password: formData.password,
-          newsletter: true,
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
         }
       );
-      console.log(formData);
+      //console.log(formData);
       const token = response.data.token;
       const username = response.data.account.username;
+      const avatar = response.data.account.avatar.secure_url;
       const userID = response.data._id;
+      //console.log("response",response.data);
+
       addMultipleCookies({ token, username, userID });
       setToken(token);
       setUser({
         username,
         userID,
+        avatar,
       });
       setLoading(false);
       setVisibleModalLog((prev) => !prev);
@@ -120,6 +131,17 @@ const Signup = ({ setToken, onSwitchToLogin, setVisibleModalLog, setUser }) => {
             placeholder="Confirmez votre mot de passe"
             required
             disabled={loading}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="avatar">Uploader un avatar</label>
+          <input
+            type="file"
+            name="avatar"
+            id="avatar"
+            onChange={(element) => {
+              handleInputChange(setFormData, element);
+            }}
           />
         </div>
 
