@@ -154,12 +154,10 @@ const Signup = ({ setToken, onSwitchToLogin, setVisibleModalLog, setUser }) => {
       </form>
 
       <div className="auth-footer">
-        <p>
-          Déjà un compte ?
-          <button className="link-button" onClick={onSwitchToLogin}>
-            Se connecter
-          </button>
-        </p>
+        <p>Déjà un compte ?</p>
+        <button className="link-button" onClick={onSwitchToLogin}>
+          Se connecter
+        </button>
       </div>
     </div>
   );

@@ -128,12 +128,10 @@ const Login = ({
       </form>
 
       <div className="auth-footer">
-        <p>
-          Pas encore de compte ?
-          <button className="link-button" onClick={onSwitchToSignup}>
-            S'inscrire
-          </button>
-        </p>
+        <p>Pas encore de compte ?</p>
+        <button className="link-button" onClick={onSwitchToSignup}>
+          S'inscrire
+        </button>
       </div>
     </div>
   );

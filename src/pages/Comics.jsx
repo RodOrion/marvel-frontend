@@ -3,6 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "./comics.css";
+import ModalErrorFav from "../components/ModalErrorFav";
 import { TiStarFullOutline } from "react-icons/ti";
 import { GiSlicingArrow } from "react-icons/gi";
 import Cookies from "js-cookie";
