@@ -316,11 +316,11 @@ section .card p {
 section > div.blur:hover p {
   transform: translateY(-10px);
 }
-section#characters.flexContainer > div.blur {
+section#characters.flexContainer > div.blur, section#comics.flexContainer > div.blur {
   flex: 1 1 50%;
 }
 @media (min-width: 1280px) {
-  section#characters.flexContainer > div.blur {
+  section#characters.flexContainer > div.blur, section#comics.flexContainer > div.blur {
     flex: 1 1 16.66667%;
   }
 }
