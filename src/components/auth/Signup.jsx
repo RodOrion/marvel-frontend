@@ -30,7 +30,7 @@ const Signup = ({ setToken, onSwitchToLogin, setVisibleModalLog, setUser }) => {
 
     try {
       const response = await axios.post(
-        "https://site--backend-marvel--zcmn9mpggpg8.code.run/user/signup",
+        "https://site--backend-marvel--zcmn9mpggpg8.code.run/user/signup", //  http://localhost:3000/user/signup
         formDataSend,
         {
           headers: {
